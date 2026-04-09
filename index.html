@@ -1,0 +1,34 @@
+<<<<<<< HEAD
+
+=======
+<!DOCTYPE html>
+<html>
+<body>
+
+<textarea id="code" rows="10" cols="50"></textarea><br>
+
+<button onclick="send('hint')">Hint</button>
+<button onclick="send('fix')">Fix</button>
+<button onclick="send('explain')">Explain</button>
+<button onclick="send('example')">Example</button>
+
+<pre id="output"></pre>
+
+<script>
+async function send(type) {
+  const code = document.getElementById("code").value;
+
+  const res = await fetch(`http://localhost:5000/${type}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code })
+  });
+
+  const data = await res.json();
+  document.getElementById("output").innerText = data;
+}
+</script>
+
+</body>
+</html>
+>>>>>>> c2879e9 (Added existing project files)
